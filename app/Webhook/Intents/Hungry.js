@@ -1,4 +1,4 @@
-const BaseIntent = require('./BaseIntent');
+const { BaseIntent } = require('./BaseIntent');
 class Hungry extends BaseIntent{
     constructor(agent){
         super(agent);
