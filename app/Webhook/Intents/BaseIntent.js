@@ -11,9 +11,9 @@ class BaseIntent{
         const { originalDetectIntentRequest } = this._body;
         switch(originalDetectIntentRequest.source){
             case 'line':
-                this.lineResponseHandler()
+                this.lineResponseHandler(); break;
             case 'facebook':
-                this.facebookResponseHandler()
+                this.facebookResponseHandler(); break;
         }
     }
 

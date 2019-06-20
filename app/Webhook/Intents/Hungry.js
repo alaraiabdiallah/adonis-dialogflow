@@ -8,11 +8,11 @@ class Hungry extends BaseIntent{
 
     }
 
-    lineResponseHander(){
+    lineResponseHandler(){
         this.send("Ini dari line");
     }
 
-    facebookResponseHander(){
+    facebookResponseHandler(){
         this.send("Ini dari facebook");
     }
 }
