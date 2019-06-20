@@ -3,8 +3,10 @@ const { Payload } = require('dialogflow-fulfillment');
 const platform = "FACEBOOK";
 
 class ButtonBuilder{
+
+    constructor(){}
     
-    static postBack({title,payload}){
+    postBack({title,payload}){
         try{
             const type = "postback";
             if (payload == undefined) throw "payload parameter not defined"
@@ -14,7 +16,7 @@ class ButtonBuilder{
         }
     }
 
-    static url({title,url, webview_height_ratio, messenger_extensions, fallback_url, webview_share_button}){
+    url({title,url, webview_height_ratio, messenger_extensions, fallback_url, webview_share_button}){
         try{
             const type = "web_url";
             if (url == undefined) throw "url parameter not defined"
@@ -30,7 +32,7 @@ class QuickReplyBuilder{
     constructor(){
     }
 
-    static replyItem({ content_type, title, payload, image_url }){
+    replyItem({ content_type, title, payload, image_url }){
         
         try{
 
@@ -52,7 +54,7 @@ class QuickReplyBuilder{
         }
     }
 
-    static replyText({ title, payload, image_url }){
+    replyText({ title, payload, image_url }){
         try{
             const content_type = "text"
             if (title == undefined) throw "title parameter not defined"
@@ -64,7 +66,7 @@ class QuickReplyBuilder{
         }
     }
 
-    static replyLocation(){
+    replyLocation(){
         try{
             const content_type = "location";
             return { content_type };
