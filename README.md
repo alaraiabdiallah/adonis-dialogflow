@@ -26,3 +26,9 @@ Run the following command to run startup migrations.
 ```js
 adonis migration:run
 ```
+
+
+## Webhook Workflow  
+  
+You're will working on folder app/Webhook/Intents create intent in that folder  
+And also register the intent to start/intents.js

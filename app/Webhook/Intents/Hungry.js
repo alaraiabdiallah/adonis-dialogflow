@@ -7,6 +7,10 @@ const products = [
     { name: "Aqua", image:"https://assets.klikindomaret.com/products/10036631/10036631_2.jpg" },
     { name: "Mizone", image:"https://www.lifull-produk.id/bundles/assets/img/product/mizone%20lychee%20lemon.jpg" },
 ];
+
+/* 
+    Hungry handler that correspond to hungry intent in dialogflow
+*/
 class Hungry extends BaseIntent{
     constructor(agent){
         super(agent);
