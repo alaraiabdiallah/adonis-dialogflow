@@ -25,6 +25,7 @@ class Hungry extends BaseIntent{
         const generics = TemplateGeneric.build({
             elements: [ ...this._mapGeneric() ]
         });
+        this.send(generics);
     }
 
     _mapGeneric(){
