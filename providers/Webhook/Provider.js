@@ -1,7 +1,7 @@
 const { ServiceProvider } = require('@adonisjs/fold')
 
 const Webhook = require('./index');
-const { ButtonBuilder,TemplateGeneric,GenericEl } = require("./reply/facebook");
+const FacebookReply = require("./reply/facebook");
 class WebhookProvider extends ServiceProvider {
   register () {
     this.app.singleton('Gits/Webhook', () => {
@@ -9,16 +9,9 @@ class WebhookProvider extends ServiceProvider {
       return new Webhook(Config)
     });
 
-    this.app.singleton('Gits/Webhook/Reply/ButtonBuilder', () => {
-      return new ButtonBuilder();
+    this.app.singleton('Gits/Webhook/Reply/Facebook', () => {
+      return new FacebookReply();
     })
-
-    this.app.singleton('Gits/Webhook/Reply/TemplateGeneric', () => {
-      return new TemplateGeneric();
-    });
-    this.app.singleton('Gits/Webhook/Reply/GenericElement', () => {
-      return new GenericEl();
-    });
   }
 }
 

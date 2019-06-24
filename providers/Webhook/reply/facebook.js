@@ -96,7 +96,7 @@ class TemplateGeneric{
     constructor(){
     }
 
-    build({elements}){
+    static build({elements}){
         try{
             if(elements == undefined)
                 throw "elements parameter not defined!";
@@ -119,7 +119,7 @@ class GenericEl{
     constructor(){
     }
 
-    make({ title, subtitle, image_url, default_action, buttons }){
+    static make({ title, subtitle, image_url, default_action, buttons }){
         try {
             if(title == undefined)
                 throw "title parameter not defined";
@@ -131,9 +131,15 @@ class GenericEl{
     }
 }
 
-module.exports = {
-    ButtonBuilder,
-    QuickReplyBuilder,
-    TemplateGeneric,
-    GenericEl
+class FacebookReply{
+    constructor(){
+        return {
+            ButtonBuilder,
+            QuickReplyBuilder,
+            TemplateGeneric,
+            GenericEl
+        }
+    }
 }
+
+module.exports = FacebookReply;

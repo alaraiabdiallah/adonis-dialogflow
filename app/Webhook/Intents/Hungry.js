@@ -1,7 +1,5 @@
 const { BaseIntent } = require('./BaseIntent');
-const TemplateGeneric = use('Gits/Webhook/Reply/TemplateGeneric');
-const GenericEl = use('Gits/Webhook/Reply/GenericElement');
-const ButtonBuilder = use('Gits/Webhook/Reply/ButtonBuilder');
+const FacebookReply = use('Gits/Webhook/Reply/Facebook');
 
 const products = [
     { name: "Aqua", image:"https://assets.klikindomaret.com/products/10036631/10036631_2.jpg" },
@@ -25,6 +23,8 @@ class Hungry extends BaseIntent{
     }
 
     facebookResponseHandler(){
+        const { TemplateGeneric } = FacebookReply;
+
         this.send("Ini dari facebook");
         const generics = TemplateGeneric.build({
             elements: [ ...this._mapGeneric() ]
@@ -37,6 +37,7 @@ class Hungry extends BaseIntent{
     }
 
     _genericItem(d){
+        const { GenericEl } = FacebookReply;
         return GenericEl.make({
             title: d.name,
             image_url: d.image,
