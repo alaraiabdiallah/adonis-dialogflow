@@ -17,7 +17,7 @@ class Carousel{
 
             let payload = templatePayload;
             payload.template.type = "carousel";
-            payload.template.altText = altText;
+            payload.altText = altText;
             if(imageAspectRatio)
                 payload.template.imageAspectRatio = imageAspectRatio;
             if(imageSize)
