@@ -6,7 +6,7 @@ class ButtonBuilder{
 
     constructor(){}
     
-    postBack({title,payload}){
+    static postBack({title,payload}){
         try{
             const type = "postback";
             if (payload == undefined) throw "payload parameter not defined"
@@ -16,7 +16,7 @@ class ButtonBuilder{
         }
     }
 
-    url({title,url, webview_height_ratio, messenger_extensions, fallback_url, webview_share_button}){
+    static url({title,url, webview_height_ratio, messenger_extensions, fallback_url, webview_share_button}){
         try{
             const type = "web_url";
             if (url == undefined) throw "url parameter not defined"
@@ -32,7 +32,7 @@ class QuickReplyBuilder{
     constructor(){
     }
 
-    replyItem({ content_type, title, payload, image_url }){
+    static replyItem({ content_type, title, payload, image_url }){
         
         try{
 
@@ -54,7 +54,7 @@ class QuickReplyBuilder{
         }
     }
 
-    replyText({ title, payload, image_url }){
+    static replyText({ title, payload, image_url }){
         try{
             const content_type = "text"
             if (title == undefined) throw "title parameter not defined"
@@ -66,7 +66,7 @@ class QuickReplyBuilder{
         }
     }
 
-    replyLocation(){
+    static replyLocation(){
         try{
             const content_type = "location";
             return { content_type };
@@ -75,7 +75,7 @@ class QuickReplyBuilder{
         }
     }
 
-    build({text, quick_replies}){
+    static build({text, quick_replies}){
         try{
             if(text == undefined)
                 throw "text parameter not defined";
