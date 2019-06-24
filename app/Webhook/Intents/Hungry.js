@@ -37,7 +37,7 @@ class Hungry extends BaseIntent{
     }
 
     _genericItem(d){
-        const { GenericEl } = FacebookReply;
+        const { GenericEl, ButtonBuilder } = FacebookReply;
         return GenericEl.make({
             title: d.name,
             image_url: d.image,
