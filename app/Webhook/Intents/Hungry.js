@@ -22,15 +22,27 @@ class Hungry extends BaseIntent{
     }
 
     lineResponseHandler(){
-        const { Carousel } = LineReply;
+        const { Carousel, QuickReply,Actions } = LineReply;
         
-        let carousel = Carousel.build({
-            altText: "List Product",
-            columns: [...this._mapCarousel()]
-        })
+        // let carousel = Carousel.build({
+        //     altText: "List Product",
+        //     columns: [...this._mapCarousel()]
+        // })
         // this.send("Ini dari line");
 
         // this.send(carousel);
+        
+        const quickReply = QuickReply.build({
+            text: "Select your favorite food category or send me your location!",
+            items: [
+                QuickReply.item({
+                    action: Actions.message({label: "Ya",text: "ya"}),
+                }),
+                QuickReply.item({
+                    action: Actions.message({label: "Tidak",text: "tidak"}),
+                }),
+            ]
+        })
 
         this.send(new Payload("LINE",{
             "type": "text", // ①

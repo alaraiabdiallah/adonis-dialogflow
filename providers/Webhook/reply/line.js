@@ -44,6 +44,36 @@ class Carousel{
     }
 }
 
+class QuickReply{
+    constructor(){}
+
+    static build({text, items}){
+        try {
+            const type = "text";
+            if(text == undefined)
+                throw "text parameter not defined";
+            if(items == undefined)
+                throw "items parameter not defined";
+            let payload = { type, text, quickReply: { items } };
+            return new Payload(platform,payload,{ sendAsMessage: true })
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    static item({action, imageUrl}){
+        try {
+            const type = "action";
+            if(action == undefined)
+                throw "action parameter not defined";
+    
+            return { type, imageUrl, action };  
+        } catch (err) {
+            console.log(err);
+        }
+    }
+}
+
 class Actions{
     
     constructor(){}
@@ -67,7 +97,8 @@ class LineReply{
     constructor(){
         return {
             Carousel,
-            Actions
+            Actions,
+            QuickReply
         }
     }
 }
