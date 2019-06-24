@@ -82,6 +82,32 @@ class ButtonTemplate{
     }
 }
 
+class Confirm{
+    constructor(){}
+
+    static build({actions, altText, text}){
+        try{
+            if(altText == undefined)
+                throw "altText parameter not defined";
+            if(text == undefined)
+                throw "text parameter not defined";
+            if(actions == undefined)
+                throw "actions parameter not defined";
+
+            let payload = templatePayload;
+            payload.altText = altText;
+            payload.template.type = "confirm";
+            
+            payload.template.text = text;
+            payload.template.actions = actions;
+
+            return new Payload(platform,payload,{ sendAsMessage: true })
+        }catch(err){
+            console.error(err);
+        }
+    }
+}
+
 class QuickReply{
     constructor(){}
 
@@ -148,7 +174,8 @@ class LineReply{
             Carousel,
             Actions,
             QuickReply,
-            ButtonTemplate
+            ButtonTemplate,
+            Confirm
         }
     }
 }

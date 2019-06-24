@@ -22,7 +22,7 @@ class Hungry extends BaseIntent{
     }
 
     lineResponseHandler(){
-        const { Carousel, QuickReply, Actions, ButtonTemplate } = LineReply;
+        const { Carousel, QuickReply, Actions, ButtonTemplate, Confirm } = LineReply;
         
         // let carousel = Carousel.build({
         //     altText: "List Product",
@@ -32,20 +32,31 @@ class Hungry extends BaseIntent{
 
         // this.send(carousel);
 
-        let buttons = ButtonTemplate.build({
-            altText: "Buttons",
-            thumbnailImageUrl: "https://assets.klikindomaret.com/products/10036631/10036631_2.jpg",
-            imageSize: "cover",
-            imageAspectRatio: "rectangle",
-            text: "please select",
-            title: "menu",
+        // let buttons = ButtonTemplate.build({
+        //     altText: "Buttons",
+        //     thumbnailImageUrl: "https://assets.klikindomaret.com/products/10036631/10036631_2.jpg",
+        //     imageSize: "cover",
+        //     imageAspectRatio: "rectangle",
+        //     text: "please select",
+        //     title: "menu",
+        //     actions: [
+                // Actions.message({label: "Ya",text: "Ya",}),
+                // Actions.message({label: "Tidak",text: "tidak",})
+        //     ]
+        // });
+
+        // this.send(buttons);
+
+        let confirm = Confirm.build({
+            altText: "Confirmation",
+            text: "Are you sure?",
             actions: [
                 Actions.message({label: "Ya",text: "Ya",}),
                 Actions.message({label: "Tidak",text: "tidak",})
             ]
         });
 
-        this.send(buttons);
+        this.send(confirm);
         
     }
 
