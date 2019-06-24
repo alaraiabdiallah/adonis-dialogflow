@@ -25,7 +25,6 @@ class Carousel{
             
             payload.template.columns = columns;
 
-            console.log(JSON.stringify(payload,null,4));
             return new Payload(platform,payload,{ sendAsMessage: true })
         }catch(err){
             console.error(err);

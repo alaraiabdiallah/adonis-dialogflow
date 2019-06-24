@@ -2,6 +2,8 @@ const { BaseIntent } = require('./BaseIntent');
 const FacebookReply = use('Gits/Webhook/Reply/Facebook');
 const LineReply = use('Gits/Webhook/Reply/Line');
 
+const { Payload } = require('dialogflow-fulfillment');
+
 const products = [
     { name: "Aqua", image:"https://assets.klikindomaret.com/products/10036631/10036631_2.jpg" },
     { name: "Mizone", image:"https://www.lifull-produk.id/bundles/assets/img/product/mizone%20lychee%20lemon.jpg" },
@@ -26,9 +28,41 @@ class Hungry extends BaseIntent{
             altText: "List Product",
             columns: [...this._mapCarousel()]
         })
-        this.send("Ini dari line");
+        // this.send("Ini dari line");
 
-        this.send(carousel);
+        // this.send(carousel);
+
+        this.send(new Payload("LINE",{
+            "type": "text", // ①
+            "text": "Select your favorite food category or send me your location!",
+            "quickReply": { // ②
+              "items": [
+                {
+                  "type": "action", // ③
+                  "action": {
+                    "type": "message",
+                    "label": "Sushi",
+                    "text": "Sushi"
+                  }
+                },
+                {
+                  "type": "action",
+                  "action": {
+                    "type": "message",
+                    "label": "Tempura",
+                    "text": "Tempura"
+                  }
+                },
+                {
+                  "type": "action", // ④
+                  "action": {
+                    "type": "location",
+                    "label": "Send location"
+                  }
+                }
+              ]
+            }
+          },{sendAsMessage: true}))
     }
 
     _mapCarousel(){
