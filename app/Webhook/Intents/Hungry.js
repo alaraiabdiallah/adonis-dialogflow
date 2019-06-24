@@ -21,12 +21,6 @@ class Hungry extends BaseIntent{
 
     lineResponseHandler(){
         const { Carousel } = LineReply;
-        let columns = this.products.map(d => {
-            const actions = [
-                {type:"message", label:"Pilih", text: d.name},
-            ];
-            return {thumbnailImageUrl: d.image, title: d.name, text: d.name, actions}
-        });
         
         let carousel = Carousel.build({
             altText: "List Product",

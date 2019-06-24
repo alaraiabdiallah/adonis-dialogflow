@@ -23,6 +23,8 @@ class Carousel{
                 payload.template.imageSize = imageSize;
             
             payload.template.columns = columns;
+
+            console.log("Carousel payload : ",payload);
             return new Payload(platform,payload,{ sendAsMessage: true })
         }catch(err){
             console.error(err);
