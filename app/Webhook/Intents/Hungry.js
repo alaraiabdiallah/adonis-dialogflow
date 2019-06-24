@@ -22,15 +22,28 @@ class Hungry extends BaseIntent{
     }
 
     lineResponseHandler(){
-        const { Carousel, QuickReply,Actions } = LineReply;
+        const { Carousel, QuickReply, Actions, ButtonTemplate } = LineReply;
         
-        let carousel = Carousel.build({
-            altText: "List Product",
-            columns: [...this._mapCarousel()]
-        })
-        this.send("Ini dari line");
+        // let carousel = Carousel.build({
+        //     altText: "List Product",
+        //     columns: [...this._mapCarousel()]
+        // })
+        // this.send("Ini dari line");
 
-        this.send(carousel);
+        // this.send(carousel);
+
+        let buttons = ButtonTemplate.build({
+            altText: "Buttons",
+            thumbnailImageUrl: "https://assets.klikindomaret.com/products/10036631/10036631_2.jpg",
+            text: "please select",
+            title: "menu",
+            actions: [
+                Actions.message({label: "Ya",text: "Ya",}),
+                Actions.message({label: "Tidak",text: "tidak",})
+            ]
+        });
+
+        this.send(buttons);
         
     }
 

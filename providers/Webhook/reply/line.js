@@ -44,6 +44,42 @@ class Carousel{
     }
 }
 
+class ButtonTemplate{
+    constructor(){}
+
+    static build({actions, altText, text, defaultAction, title, imageAspectRatio, imageSize, imageBackgroundColor}){
+        try{
+            if(altText == undefined)
+                throw "altText parameter not defined";
+            if(text == undefined)
+                throw "text parameter not defined";
+            if(actions == undefined)
+                throw "actions parameter not defined";
+
+            let payload = templatePayload;
+            payload.template.type = "buttons";
+            payload.altText = altText;
+            if(imageAspectRatio)
+                payload.template.imageAspectRatio = imageAspectRatio;
+            if(imageSize)
+                payload.template.imageSize = imageSize;
+            if(imageBackgroundColor)
+                payload.template.imageBackgroundColor = imageBackgroundColor;
+            if(title)
+                payload.template.title = title;
+            if(defaultAction)
+                payload.template.defaultAction = title;
+            
+            payload.template.text = text;
+            payload.template.actions = actions;
+
+            return new Payload(platform,payload,{ sendAsMessage: true })
+        }catch(err){
+            console.error(err);
+        }
+    }
+}
+
 class QuickReply{
     constructor(){}
 
@@ -109,7 +145,8 @@ class LineReply{
         return {
             Carousel,
             Actions,
-            QuickReply
+            QuickReply,
+            ButtonTemplate
         }
     }
 }
