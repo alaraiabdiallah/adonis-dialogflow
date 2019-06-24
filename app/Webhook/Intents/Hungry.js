@@ -35,6 +35,8 @@ class Hungry extends BaseIntent{
         let buttons = ButtonTemplate.build({
             altText: "Buttons",
             thumbnailImageUrl: "https://assets.klikindomaret.com/products/10036631/10036631_2.jpg",
+            imageSize: "cover",
+            imageAspectRatio: "rectangle",
             text: "please select",
             title: "menu",
             actions: [
