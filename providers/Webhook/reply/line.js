@@ -25,7 +25,20 @@ class CarouselBuilder{
     }
 }
 
+class CarouselItem{
 
-module.exports = {
-    CarouselBuilder
+    constructor(){}
+
+
 }
+
+class LineReply{
+    constructor(){
+        return {
+            CarouselBuilder
+        }
+    }
+}
+
+
+module.exports = LineReply;

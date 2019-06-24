@@ -2,7 +2,7 @@ const { Payload } = require('dialogflow-fulfillment');
 
 const platform = "FACEBOOK";
 
-class ButtonBuilder{
+class Button{
 
     constructor(){}
     
@@ -27,7 +27,7 @@ class ButtonBuilder{
     }
 }
 
-class QuickReplyBuilder{
+class QuickReply{
 
     constructor(){
     }
@@ -91,7 +91,7 @@ class QuickReplyBuilder{
     
 }
 
-class TemplateGeneric{
+class Generic{
 
     constructor(){
     }
@@ -113,13 +113,8 @@ class TemplateGeneric{
             console.error(err);
         }
     }
-}
 
-class GenericEl{
-    constructor(){
-    }
-
-    static make({ title, subtitle, image_url, default_action, buttons }){
+    static item({ title, subtitle, image_url, default_action, buttons }){
         try {
             if(title == undefined)
                 throw "title parameter not defined";
@@ -131,13 +126,13 @@ class GenericEl{
     }
 }
 
+
 class FacebookReply{
     constructor(){
         return {
-            ButtonBuilder,
-            QuickReplyBuilder,
-            TemplateGeneric,
-            GenericEl
+            Button,
+            QuickReply,
+            Generic,
         }
     }
 }

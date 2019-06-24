@@ -23,10 +23,10 @@ class Hungry extends BaseIntent{
     }
 
     facebookResponseHandler(){
-        const { TemplateGeneric } = FacebookReply;
+        const { Generic } = FacebookReply;
 
         this.send("Ini dari facebook");
-        const generics = TemplateGeneric.build({
+        const generics = Generic.build({
             elements: [ ...this._mapGeneric() ]
         });
         this.send(generics);
@@ -37,13 +37,13 @@ class Hungry extends BaseIntent{
     }
 
     _genericItem(d){
-        const { GenericEl, ButtonBuilder } = FacebookReply;
-        return GenericEl.make({
+        const { Generic, Button } = FacebookReply;
+        return Generic.item({
             title: d.name,
             image_url: d.image,
             subtitle: d.name,
             buttons: [
-                ButtonBuilder.postBack({title:d.name,payload:d.name})
+                Button.postBack({title:d.name,payload:d.name})
             ]
         })
     }
