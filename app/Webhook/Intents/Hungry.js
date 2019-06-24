@@ -73,13 +73,21 @@ class Hungry extends BaseIntent{
     }
 
     facebookResponseHandler(){
-        const { Generic } = FacebookReply;
+        const { Generic, ButtonTemplate, Button } = FacebookReply;
 
-        this.send("Ini dari facebook");
-        const generics = Generic.build({
-            elements: [ ...this._mapGeneric() ]
-        });
-        this.send(generics);
+        // this.send("Ini dari facebook");
+        // const generics = Generic.build({
+        //     elements: [ ...this._mapGeneric() ]
+        // });
+        // this.send(generics);
+
+        let buttons = ButtonTemplate.build({
+            text: "Are you sure?",
+            buttons: [
+                Button.postBack({title:"Ya",payload:"Ya"}),
+                Button.postBack({title:"Tidak",payload:"tidak"}),
+            ]
+        })
     }
 
     _mapGeneric(){

@@ -14,6 +14,10 @@ class Carousel{
                 throw "altText parameter not defined";
             if(columns == undefined)
                 throw "columns parameter not defined";
+            if(!Array.isArray(columns))
+                throw "columns must be array";
+            if(columns.length > 10)
+                throw "columns only consist 10 element!";;
 
             let payload = templatePayload;
             payload.template.type = "carousel";

@@ -104,7 +104,7 @@ class Generic{
             if(elements.length > 10)
                 throw "elements only consist 10 element!";
 
-            const p = { "template_type":"generic", elements } 
+            const p = { template_type:"generic", elements } 
             const template = { attachment : { type: "template", payload:p }}
 
             this.payload = { ...template };
@@ -126,6 +126,25 @@ class Generic{
     }
 }
 
+class ButtonTemplate{
+    constructor(){ }
+
+    static build({ buttons, text}){
+        try{
+            if(buttons == undefined)
+                throw "buttons parameter not defined!";
+
+            const p = { template_type:"button", text , buttons } 
+            const template = { attachment : { type: "template", payload:p }}
+
+            let payload = { ...template };
+            return new Payload(platform,payload,{ sendAsMessage: true })
+        }catch(err){
+            console.error(err);
+        }
+    }
+}
+
 
 class FacebookReply{
     constructor(){
@@ -133,6 +152,7 @@ class FacebookReply{
             Button,
             QuickReply,
             Generic,
+            ButtonTemplate
         }
     }
 }
