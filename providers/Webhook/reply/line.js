@@ -17,6 +17,7 @@ class Carousel{
 
             let payload = templatePayload;
             payload.template.type = "carousel";
+            payload.template.altText = altText;
             if(imageAspectRatio)
                 payload.template.imageAspectRatio = imageAspectRatio;
             if(imageSize)
@@ -24,7 +25,7 @@ class Carousel{
             
             payload.template.columns = columns;
 
-            console.log("Carousel payload : ",payload);
+            console.log(JSON.stringify(payload,null,4));
             return new Payload(platform,payload,{ sendAsMessage: true })
         }catch(err){
             console.error(err);
