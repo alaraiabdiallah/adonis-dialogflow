@@ -1,5 +1,6 @@
 const { BaseIntent } = require('./BaseIntent');
 const FacebookReply = use('Gits/Webhook/Reply/Facebook');
+const LineReply = use('Gits/Webhook/Reply/Line');
 
 const products = [
     { name: "Aqua", image:"https://assets.klikindomaret.com/products/10036631/10036631_2.jpg" },
@@ -19,7 +20,33 @@ class Hungry extends BaseIntent{
     }
 
     lineResponseHandler(){
+        const { Carousel } = LineReply;
+        let columns = this.products.map(d => {
+            const actions = [
+                {type:"message", label:"Pilih", text: d.name},
+            ];
+            return {thumbnailImageUrl: d.image, title: d.name, text: d.name, actions}
+        });
+        
+        let carousel = Carousel.build({
+            altText: "List Product",
+            columns: [...this._mapCarousel()]
+        })
         this.send("Ini dari line");
+
+        this.send(carousel);
+    }
+
+    _mapCarousel(){
+        return this.products.map(this._carouselItem)
+    }
+
+    _carouselItem(d){
+        const { Carousel, Actions } = LineReply
+        const actions = [
+            Actions.message({label: "Pilih",text: d.name}),
+        ];
+        return Carousel.column({thumbnailImageUrl: d.image, title: d.name, text: d.name, actions});
     }
 
     facebookResponseHandler(){
