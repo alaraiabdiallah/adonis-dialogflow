@@ -90,6 +90,17 @@ class Actions{
             console.log(err);
         }
     }
+
+    static location({label}){
+        try {
+            const type = "location";
+            if(label == undefined)
+                throw "label parameter not defined";
+            return {type, label};
+        } catch (err) {
+            console.log(err);
+        }
+    }
 }
 
 
