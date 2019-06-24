@@ -47,7 +47,7 @@ class Carousel{
 class ButtonTemplate{
     constructor(){}
 
-    static build({actions, altText, text, defaultAction, title, imageAspectRatio, imageSize, imageBackgroundColor}){
+    static build({actions, altText, text, defaultAction, title, thumbnailImageUrl, imageAspectRatio, imageSize, imageBackgroundColor}){
         try{
             if(altText == undefined)
                 throw "altText parameter not defined";
@@ -69,6 +69,8 @@ class ButtonTemplate{
                 payload.template.title = title;
             if(defaultAction)
                 payload.template.defaultAction = title;
+            if(thumbnailImageUrl)
+                payload.template.thumbnailImageUrl = thumbnailImageUrl;
             
             payload.template.text = text;
             payload.template.actions = actions;
