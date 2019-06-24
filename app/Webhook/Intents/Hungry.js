@@ -88,6 +88,8 @@ class Hungry extends BaseIntent{
                 Button.postBack({title:"Tidak",payload:"tidak"}),
             ]
         })
+
+        this.send(buttons);
     }
 
     _mapGeneric(){
